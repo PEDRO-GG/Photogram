@@ -1,4 +1,4 @@
-<div class="bg-gray-700 text-white p-2">
+<div class="p-2 text-white bg-gray-700">
   <div class="flex justify-between">
     <div class="flex items-center gap-x-1">
       <svg
@@ -14,14 +14,14 @@
         />
       </svg>
 
-      <a href="#" class="text-2xl font-bold">Photogram</a>
+      <a href="/" class="text-2xl font-bold">Photogram</a>
     </div>
     <app-hamburger
       [isOpen]="isOpen"
       (changeOpenState)="changeOpenState()"
     ></app-hamburger>
   </div>
-  <nav *ngIf="isOpen" class="font-medium text-lg p-2">
+  <nav *ngIf="isOpen" class="p-2 text-lg font-medium">
     <!-- <div class="grid grid-cols-2 gap-y-2">
       <a class="font-bold" href="#">Home</a>
       <a href="#">Profile</a>
@@ -31,28 +31,13 @@
     </div> -->
 
     <a
-      href="#"
-      class="
-        bg-blue-500
-        rounded-lg
-        font-bold
-        text-white text-center
-        px-3
-        py-2
-        hover:bg-blue-600
-      "
+      (click)="login()"
+      class="px-3 py-2 font-bold text-center text-white bg-blue-500 rounded-lg hover:bg-blue-600"
       >Log In</a
     >
     <a
-      href="#"
-      class="
-        font-bold
-        text-blue-500
-        px-3
-        py-2
-        hover:bg-blue-500
-        hover:text-white
-      "
+      (click)="register()"
+      class="px-3 py-2 font-bold text-blue-500"
       >Sign Up</a
     >
   </nav>

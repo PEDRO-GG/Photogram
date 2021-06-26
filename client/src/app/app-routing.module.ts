@@ -1,8 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
+import { LoginComponent } from './login/login.component';
+import { PostsListComponent } from './posts/posts-list/posts-list.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
+  {path:"", component: PostsListComponent},
+  {path:"register", component: RegisterComponent},
+  {path:"login", component: LoginComponent}
 ];
 // Todo: decide what should be shown on homescreen(register or random posts)
 // Authentication needed as well 
