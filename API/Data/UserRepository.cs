@@ -20,14 +20,6 @@ namespace API.Data
             _context = context;
         }
 
-          public async Task<MemberDto> GetMemberAsync(string username)
-        {
-            return await _context.Users
-                .Where(x => x.UserName == username)
-                .ProjectTo<MemberDto>(_mapper.ConfigurationProvider) // Saves us from having to type the select statement
-                .SingleOrDefaultAsync();
-        }
-
         public async Task<IEnumerable<MemberDto>> GetMembersAsync()
         {
             return await _context.Users 
@@ -35,6 +27,13 @@ namespace API.Data
                 .ToListAsync();
         }
 
+          public async Task<MemberDto> GetMemberAsync(string username)
+        {
+            return await _context.Users
+                .Where(x => x.Username == username)
+                .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
+                .SingleOrDefaultAsync();
+        }
 
 
         // Below methods are not used by the UsersController
@@ -46,14 +45,14 @@ namespace API.Data
         public async Task<AppUser> GetUserByUsernameAsync(string username)
         {
             return await _context.Users
-                .Include(p => p.Photos)
-                .SingleOrDefaultAsync(x => x.UserName == username);
+                .Include(p => p.Posts)
+                .SingleOrDefaultAsync(x => x.Username == username);
         }
 
         public async Task<IEnumerable<AppUser>> GetUsersAsync()
         {
             return await _context.Users
-                .Include(p => p.Photos)
+                .Include(p => p.Posts)
                 .ToListAsync();
         }
 

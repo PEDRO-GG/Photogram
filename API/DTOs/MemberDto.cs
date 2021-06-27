@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using API.Entities;
 
 namespace API.DTOs
 {
@@ -7,12 +8,13 @@ namespace API.DTOs
     public class MemberDto
     {
         public int Id { get; set; }
-        public string UserName { get; set; }
-        public string PhotoUrl { get; set; }
+        public string Username { get; set; }
         public int Age { get; set; }
         public DateTime Created { get; set; }
         public DateTime LastActive { get; set; }
         public string Introduction { get; set; }
-        public ICollection<PhotoDto> Photos { get; set; }
+        
+        public ICollection<PostDto> Posts { get; set; }
+        public PhotoDto ProfilePicture {get; set;}
     }
 }

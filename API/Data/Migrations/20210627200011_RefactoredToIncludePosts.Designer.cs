@@ -3,14 +3,16 @@ using System;
 using API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20210627200011_RefactoredToIncludePosts")]
+    partial class RefactoredToIncludePosts
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -76,23 +78,23 @@ namespace API.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Caption")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("Created")
-                        .HasColumnType("TEXT");
-
                     b.Property<int?>("PhotoId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("PostedById")
+                    b.Property<string>("body")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("postedById")
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("title")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
                     b.HasIndex("PhotoId");
 
-                    b.HasIndex("PostedById");
+                    b.HasIndex("postedById");
 
                     b.ToTable("Posts");
                 });
@@ -112,13 +114,13 @@ namespace API.Data.Migrations
                         .WithMany()
                         .HasForeignKey("PhotoId");
 
-                    b.HasOne("API.Entities.AppUser", "PostedBy")
+                    b.HasOne("API.Entities.AppUser", "postedBy")
                         .WithMany("Posts")
-                        .HasForeignKey("PostedById");
+                        .HasForeignKey("postedById");
 
                     b.Navigation("Photo");
 
-                    b.Navigation("PostedBy");
+                    b.Navigation("postedBy");
                 });
 
             modelBuilder.Entity("API.Entities.AppUser", b =>
