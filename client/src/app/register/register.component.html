@@ -1,1 +1,54 @@
-<p>register works!</p>
+<div class="h-screen pt-10 register">
+  <form
+    #loginForm="ngForm"
+    (ngSubmit)="register()"
+    class="p-10 mx-auto bg-white bg-opacity-25 rounded w-80"
+  >
+    <p class="text-lg font-bold text-center text-white">Sign Up</p>
+
+    <div class="mt-2">
+      <label class="text-sm text-white" for="username">Username</label>
+      <input
+        [(ngModel)]="newUser.username"
+        class="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
+        type="username"
+        id="username"
+        name="username"
+        placeholder="Enter your username"
+        required
+        autocomplete="off"
+      />
+    </div>
+
+    <div class="mt-2">
+      <label class="text-sm text-white">Password</label>
+      <input
+        [(ngModel)]="newUser.password"
+        class="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
+        type="password"
+        id="password"
+        name="password"
+        placeholder="Enter your password"
+        required
+        autocomplete="off"
+      />
+    </div>
+
+    <div class="flex items-center justify-between mt-4">
+      <button
+        class="px-4 py-1 font-light tracking-wider text-white bg-gray-900 rounded hover:bg-gray-800"
+        type="submit"
+      >
+        Register
+      </button>
+    </div>
+    <div class="text-center">
+      <a
+        routerLink="/register"
+        class="text-sm font-light hover:text-red-400"
+      >
+        Have an account? <span class="text-blue-200">Log in</span>
+      </a>
+    </div>
+  </form>
+</div>

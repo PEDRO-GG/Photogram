@@ -14,15 +14,9 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   user: any = {};
-  userToPrint: any;
   login() {
-    this.accountService.login(this.user).subscribe((response) => {
-      this.accountService.currentUser$
-        .pipe(take(1))
-        .subscribe((user) => (this.userToPrint = user));
-      console.log("Response from server: ", response);
-      console.log('Current User: ', this.userToPrint);
-      this.router.navigateByUrl("/")
-    });
+    this.accountService
+      .login(this.user)
+      .subscribe(() => this.router.navigateByUrl('/'));
   }
 }
