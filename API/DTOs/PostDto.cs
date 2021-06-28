@@ -9,5 +9,6 @@ namespace API.DTOs
         public DateTime Created { get; set; } = DateTime.Now;
         
         public PhotoDto Photo { get; set; }
+        public string PostedBy{get;set;}
     }
 }

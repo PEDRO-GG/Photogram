@@ -1,1 +1,40 @@
-<p>post-card works!</p>
+<div class="mx-auto my-2">
+  <div class="overflow-hidden bg-white rounded-lg shadow-md">
+    <div class="p-1 m-1">
+      <img
+        src="https://picsum.photos/640/400/?random"
+        alt="Placeholder"
+        class="object-cover w-full h-48 rounded-t-xl"
+      />
+    </div>
+
+    <div class="flex flex-col p-2 leading-none align-bottom md:p-4">
+      <div class="flex flex-row items-center justify-between">
+        <a
+          class="flex items-center text-black no-underline hover:underline"
+          href="#"
+        >
+          <img
+            alt="Placeholder"
+            class="block rounded-full"
+            src="https://picsum.photos/32/32/?random"
+          />
+          <span class="ml-2 text-sm"> {{ post.postedBy }} </span>
+        </a>
+      </div>
+    </div>
+
+    <div class="col-span-3 row-span-1">
+      <header
+        class="flex items-center justify-between p-2 leading-tight md:p-4"
+      >
+        <h1 class="text-lg">
+          <a class="text-black no-underline hover:underline" href="#">
+            {{ post.caption }}
+          </a>
+        </h1>
+        <p class="text-sm text-grey-darker">{{ timeFromNow(post.created) }}</p>
+      </header>
+    </div>
+  </div>
+</div>
