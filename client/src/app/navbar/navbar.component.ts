@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { AccountService } from '../_services/account.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,24 +8,40 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
+  constructor(private router: Router, public accountService: AccountService) {}
+
+  ngOnInit(): void {
+    this.checkIfLoggedIn();
+  }
+
   isOpen: boolean = false;
-
-  constructor(
-    private router: Router
-  ) {}
-
-  ngOnInit(): void {}
+  isLoggedIn: boolean = false;
 
   changeOpenState() {
     this.isOpen = !this.isOpen;
   }
 
-  register() {
-    this.router.navigateByUrl("/register")
-    this.changeOpenState()
+  checkIfLoggedIn() {
+    this.accountService.currentUser$.subscribe((user) => {
+      console.log(user);
+      this.isLoggedIn = !!user;
+      console.log(this.isLoggedIn);
+    });
   }
-  login(){
-    this.router.navigateByUrl("/login")
-    this.changeOpenState()
+
+  register() {
+    this.router.navigateByUrl('/register');
+    this.changeOpenState();
+  }
+
+  login() {
+    this.router.navigateByUrl('/login');
+    this.changeOpenState();
+  }
+
+  logout() {
+    this.accountService.logout();
+    this.router.navigateByUrl('/');
+    this.changeOpenState();
   }
 }

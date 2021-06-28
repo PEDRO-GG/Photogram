@@ -8,16 +8,14 @@ import { AccountService } from './_services/account.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  constructor(
-    private accountService: AccountService,
-  ) {}
+  constructor(private accountService: AccountService) {}
 
   ngOnInit(): void {
     this.setCurrentUser();
   }
 
   setCurrentUser() {
-    const user: User = JSON.parse(localStorage.getItem('user') || '{}');
+    const user: User = JSON.parse(localStorage.getItem('user'));
     this.accountService.setCurrentUser(user);
   }
 }
