@@ -16,6 +16,7 @@ export class NavbarComponent implements OnInit {
 
   isOpen: boolean = false;
   isLoggedIn: boolean = false;
+  currentUser: any = null;
 
   changeOpenState() {
     this.isOpen = !this.isOpen;
@@ -23,9 +24,8 @@ export class NavbarComponent implements OnInit {
 
   checkIfLoggedIn() {
     this.accountService.currentUser$.subscribe((user) => {
-      console.log(user);
       this.isLoggedIn = !!user;
-      console.log(this.isLoggedIn);
+      this.currentUser = user;
     });
   }
 

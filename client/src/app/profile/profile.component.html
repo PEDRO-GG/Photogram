@@ -1,0 +1,44 @@
+<ng-container *ngIf="user">
+  <article class="flex flex-col p-4 text-white bg-gray-800">
+    <div class="flex gap-4">
+      <img
+        src="https://images.pexels.com/photos/3278968/pexels-photo-3278968.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
+        class="object-cover w-20 h-20 rounded-full"
+        alt="username"
+      />
+      <div>
+        <h2 class="block text-3xl font-light leading-relaxed">
+          {{ user.username }}
+        </h2>
+        <p class="flex text-base">
+          <span class="mr-1 font-bold">{{ user.posts.length }} </span> Posts
+        </p>
+      </div>
+    </div>
+    <p class="text-base">{{ user.introduction.slice(0, 80) }}</p>
+  </article>
+
+  <article class="grid grid-cols-3">
+    <div class="col-span-1 cursor-pointer">
+      <img
+        src="https://images.pexels.com/photos/247431/pexels-photo-247431.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
+        class="object-cover w-full h-full"
+        alt="description"
+      />
+    </div>
+    <div class="col-span-1 cursor-pointer">
+      <img
+        src="https://images.pexels.com/photos/258109/pexels-photo-258109.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
+        class="object-cover w-full h-full"
+        alt="description"
+      />
+    </div>
+    <div class="col-span-1 cursor-pointer">
+      <img
+        src="https://images.pexels.com/photos/248771/pexels-photo-248771.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
+        class="object-cover w-full h-full"
+        alt="description"
+      />
+    </div>
+  </article>
+</ng-container>
