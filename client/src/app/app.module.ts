@@ -12,7 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { PostsListComponent } from './posts/posts-list/posts-list.component';
 import { PostCardComponent } from './posts/post-card/post-card.component';
-import { ProfileComponent } from './profile/profile.component';
+import { ProfileDetailComponent } from './profile/profile-detail/profile-detail.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,7 @@ import { ProfileComponent } from './profile/profile.component';
     RegisterComponent,
     PostsListComponent,
     PostCardComponent,
-    ProfileComponent,
+    ProfileDetailComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],

@@ -10,5 +10,6 @@ namespace API.DTOs
         
         public PhotoDto Photo { get; set; }
         public string PostedBy{get;set;}
+        public PhotoDto ProfilePicture { get; set; }
     }
 }

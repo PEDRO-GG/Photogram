@@ -1,8 +1,9 @@
 <div class="mx-auto my-2">
   <div class="overflow-hidden bg-white rounded-lg shadow-md">
     <div class="p-1 m-1">
+      <!-- Posts photo here -->
       <img
-        src="https://picsum.photos/640/400/?random"
+        src="{{ post.photo.url }}"
         alt="Placeholder"
         class="object-cover w-full h-48 rounded-t-xl"
       />
@@ -12,14 +13,17 @@
       <div class="flex flex-row items-center justify-between">
         <a
           class="flex items-center text-black no-underline hover:underline"
-          href="#"
+          routerLink="/profile/{{ post.postedBy }}"
         >
+          <!-- users profile picture here; also give this img a height and width of 32-->
           <img
             alt="Placeholder"
             class="block rounded-full"
             src="https://picsum.photos/32/32/?random"
           />
-          <span class="ml-2 text-sm"> {{ post.postedBy }} </span>
+          <span class="ml-2 text-sm">
+            {{ post.postedBy }}
+          </span>
         </a>
       </div>
     </div>

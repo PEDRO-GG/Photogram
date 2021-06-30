@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { UserService } from '../_services/user.service';
+import { UserService } from '../../_services/user.service';
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css'],
+  selector: 'app-profile-detail',
+  templateUrl: './profile-detail.component.html',
+  styleUrls: ['./profile-detail.component.css'],
 })
-export class ProfileComponent implements OnInit {
+export class ProfileDetailComponent implements OnInit {
   constructor(
     private userService: UserService,
     private route: ActivatedRoute

@@ -16,5 +16,7 @@ export class PostCardComponent implements OnInit {
     return dayjs(createdAt).fromNow();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // console.log(this.post)
+  }
 }
