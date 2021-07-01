@@ -13,6 +13,7 @@ import { RegisterComponent } from './register/register.component';
 import { PostsListComponent } from './posts/posts-list/posts-list.component';
 import { PostCardComponent } from './posts/post-card/post-card.component';
 import { ProfileDetailComponent } from './profile/profile-detail/profile-detail.component';
+import { PostCreateComponent } from './posts/post-create/post-create.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ProfileDetailComponent } from './profile/profile-detail/profile-detail.
     PostsListComponent,
     PostCardComponent,
     ProfileDetailComponent,
+    PostCreateComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],

@@ -1,4 +1,4 @@
-<div class="mx-auto my-2">
+<div class="max-w-xs mx-auto my-2">
   <div class="overflow-hidden bg-white rounded-lg shadow-md">
     <div class="p-1 m-1">
       <!-- Posts photo here -->
@@ -18,8 +18,8 @@
           <!-- users profile picture here; also give this img a height and width of 32-->
           <img
             alt="Placeholder"
-            class="block rounded-full"
-            src="https://picsum.photos/32/32/?random"
+            class="block rounded-full w-7"
+            src="{{ post.profilePicture.url }}"
           />
           <span class="ml-2 text-sm">
             {{ post.postedBy }}

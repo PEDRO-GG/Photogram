@@ -23,9 +23,13 @@
   </div>
   <nav *ngIf="isOpen" class="p-2 text-lg font-medium">
     <div *ngIf="isLoggedIn" class="grid grid-cols-2 gap-y-2">
-      <a class="font-bold" href="#">Home</a>
-      <a routerLink="/profile/{{ currentUser.username }}">Profile</a>
-      <a href="#">Post</a>
+      <a class="font-bold" (click)="changeOpenState()" routerLink="/">Home</a>
+      <a
+        (click)="changeOpenState()"
+        routerLink="/profile/{{ currentUser.username }}"
+        >Profile</a
+      >
+      <a (click)="changeOpenState()" routerLink="/create-post">Create</a>
       <a (click)="logout()">Logout</a>
     </div>
 
