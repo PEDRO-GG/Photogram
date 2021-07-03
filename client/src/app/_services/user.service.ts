@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -10,10 +10,17 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   getAllUsers() {
-    return this.http.get(this.baseUrl + "users")
+    return this.http.get(this.baseUrl + 'users');
   }
 
   getUser(username: string) {
     return this.http.get(this.baseUrl + 'users/' + username);
+  }
+
+  createPost(caption: string, picture: File) {
+    const formData = new FormData();
+    formData.append('Caption', caption);
+    formData.append('Photo', picture);
+    return this.http.post(this.baseUrl + 'users/create-post', formData);
   }
 }

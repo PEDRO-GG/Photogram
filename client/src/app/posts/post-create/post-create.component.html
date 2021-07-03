@@ -10,12 +10,17 @@
       Create Post!
     </h2>
 
-    <form class="mt-8 space-y-3">
+    <form #postForm="ngForm" (ngSubmit)="submitPost()" class="mt-8 space-y-3">
       <div class="grid grid-cols-1 space-y-2">
-        <label class="text-sm font-bold tracking-wide text-gray-500"
+        <label
+          for="caption"
+          class="text-sm font-bold tracking-wide text-gray-500"
           >Caption</label
         >
         <input
+          [(ngModel)]="caption"
+          id="caption"
+          name="caption"
           class="p-2 text-base border border-gray-300 rounded-lg  focus:outline-none focus:border-indigo-500"
           type="text"
           placeholder="Type caption here"
@@ -26,37 +31,39 @@
         <label class="text-sm font-bold tracking-wide text-gray-500"
           >Photo</label
         >
-        <div class="flex items-center justify-center w-full">
-          <label
-            class="w-full p-10 text-center border-4 border-dashed rounded-lg  h-60"
-          >
-            <div
-              class="flex items-center justify-center w-full h-full text-center"
-            >
-              <p class="text-gray-500 pointer-none">
-                <span class="text-sm">Drag and drop</span> files here <br />
-                or
-                <span href="" id="" class="text-blue-600 hover:underline"
-                  >select a file</span
-                >
-                from your computer
-              </p>
-            </div>
-            <input type="file" class="hidden" />
-          </label>
-        </div>
-      </div>
-      <p class="text-sm text-gray-300">
-        <span>File type: img,png,types of images</span>
-      </p>
-      <div>
-        <button
-          type="submit"
-          class="flex justify-center w-full p-4 my-5 font-semibold tracking-wide text-gray-100 transition duration-300 ease-in bg-blue-500 rounded-full shadow-lg cursor-pointer  focus:outline-none focus:shadow-outline hover:bg-blue-600"
+        <ngx-dropzone
+          (change)="onSelect($event)"
+          [multiple]="false"
+          accept="image/jpeg,image/jpg,image/png"
+          name="picture"
         >
-          Upload
-        </button>
+          <ngx-dropzone-label
+            >Drag and drop files here
+            <small class="block"
+              >or
+              <span class="text-blue-600 hover:underline">select a file</span>
+              from your computer</small
+            ></ngx-dropzone-label
+          >
+          <ngx-dropzone-preview
+            *ngIf="file"
+            [removable]="true"
+            (removed)="onRemove(file)"
+          >
+            <ngx-dropzone-label
+              >{{ file.name }} ({{ file.type }})</ngx-dropzone-label
+            >
+          </ngx-dropzone-preview>
+        </ngx-dropzone>
       </div>
+
+      <span class="text-sm text-gray-300">File type: img,png,jpg</span>
+      <button
+        type="submit"
+        class="flex justify-center w-full p-4 my-5 font-semibold tracking-wide text-gray-100 transition duration-300 ease-in bg-blue-500 rounded-full shadow-lg cursor-pointer  focus:outline-none focus:shadow-outline hover:bg-blue-600"
+      >
+        Upload
+      </button>
     </form>
   </div>
 </div>
