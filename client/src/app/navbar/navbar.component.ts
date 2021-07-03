@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AccountService } from '../_services/account.service';
 
 @Component({
@@ -8,7 +9,11 @@ import { AccountService } from '../_services/account.service';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-  constructor(private router: Router, public accountService: AccountService) {}
+  constructor(
+    private router: Router,
+    public accountService: AccountService,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.checkIfLoggedIn();
@@ -41,6 +46,7 @@ export class NavbarComponent implements OnInit {
 
   logout() {
     this.accountService.logout();
+    this.toastr.success('Goodbye');
     this.router.navigateByUrl('/');
     this.changeOpenState();
   }

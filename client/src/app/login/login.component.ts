@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs/operators';
 import { AccountService } from '../_services/account.service';
 
@@ -9,14 +10,19 @@ import { AccountService } from '../_services/account.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  constructor(private accountService: AccountService, private router: Router) {}
+  constructor(
+    private accountService: AccountService,
+    private router: Router,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {}
 
   user: any = {};
   login() {
-    this.accountService
-      .login(this.user)
-      .subscribe(() => this.router.navigateByUrl('/'));
+    this.accountService.login(this.user).subscribe(() => {
+      this.toastr.success(`Welcome back ${this.user.username}`);
+      this.router.navigateByUrl('/');
+    });
   }
 }
