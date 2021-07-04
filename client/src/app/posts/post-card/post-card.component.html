@@ -1,7 +1,6 @@
-<div class="max-w-xs mx-auto my-2">
+<div class="w-80 sm:w-96">
   <div class="overflow-hidden bg-white rounded-lg shadow-md">
     <div class="p-1 m-1">
-      <!-- Posts photo here -->
       <img
         src="{{ post.photo.url }}"
         alt="Placeholder"
@@ -9,15 +8,14 @@
       />
     </div>
 
-    <div class="flex flex-col p-2 leading-none align-bottom md:p-4">
+    <div class="flex flex-col p-4 leading-none align-bottom">
       <div class="flex flex-row items-center justify-between">
         <a
           class="flex items-center text-black no-underline hover:underline"
           routerLink="/profile/{{ post.postedBy }}"
         >
-          <!-- users profile picture here; also give this img a height and width of 32-->
           <img
-            alt="Placeholder"
+            alt="profilePicture"
             class="block rounded-full w-7"
             src="{{ post.profilePicture.url }}"
           />
@@ -33,9 +31,9 @@
         class="flex items-center justify-between p-2 leading-tight md:p-4"
       >
         <h1 class="text-lg">
-          <a class="text-black no-underline hover:underline" href="#">
+          <p class="text-black">
             {{ post.caption }}
-          </a>
+          </p>
         </h1>
         <p class="text-sm text-grey-darker">{{ timeFromNow(post.created) }}</p>
       </header>

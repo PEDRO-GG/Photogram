@@ -1,8 +1,5 @@
 .login {
-    /*
-    background: url('https://tailwindadmin.netlify.app/dist/images/login-new.jpeg');
-  */
-    background: url("http://bit.ly/2gPLxZ4");
+    background: url("https://res.cloudinary.com/dnsvqpc4t/image/upload/v1625416568/mountain_dvjc4l.jpg");
     background-repeat: no-repeat;
     background-size: cover;
   }

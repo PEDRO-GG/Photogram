@@ -18,7 +18,9 @@
     <p class="text-base">{{ user.introduction.slice(0, 80) }}</p>
   </article>
 
-  <article class="grid grid-cols-1">
+  <article
+    class="grid grid-cols-1 gap-2 my-3  lg:h-screen lg:place-items-start place-items-center lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4"
+  >
     <app-post-card
       *ngFor="let post of user.posts"
       [post]="post"

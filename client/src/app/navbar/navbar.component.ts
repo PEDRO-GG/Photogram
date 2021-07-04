@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AccountService } from '../_services/account.service';
+import { WindowSizeService } from '../_services/window-size.service';
 
 @Component({
   selector: 'app-navbar',
@@ -12,7 +13,8 @@ export class NavbarComponent implements OnInit {
   constructor(
     private router: Router,
     public accountService: AccountService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    public windowSizeService: WindowSizeService
   ) {}
 
   ngOnInit(): void {
@@ -49,5 +51,10 @@ export class NavbarComponent implements OnInit {
     this.toastr.success('Goodbye');
     this.router.navigateByUrl('/');
     this.changeOpenState();
+  }
+  logoutDesktop() {
+    this.accountService.logout();
+    this.toastr.success('Goodbye');
+    this.router.navigateByUrl('/');
   }
 }

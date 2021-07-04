@@ -1,3 +1,14 @@
-<div *ngFor="let post of allPosts">
-  <app-post-card [post]="post"></app-post-card>
-</div>
+<main
+  class="grid grid-cols-1 gap-2 my-4  place-items-center lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4"
+>
+  <article *ngFor="let post of allPosts">
+    <app-post-card [post]="post"></app-post-card>
+  </article>
+</main>
+<!-- <style>
+  .posts-grid {
+    display: grid;
+    grid-gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+</style> -->
