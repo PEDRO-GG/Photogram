@@ -42,11 +42,7 @@
       *ngIf="!windowSizeService.getIsMobileResolution() && isLoggedIn"
     >
       <a class="hover:underline" routerLink="/">Home</a>
-      <a
-        class="hover:underline"
-        routerLink="/profile/{{ currentUser.username }}"
-        >Profile</a
-      >
+      <a class="hover:underline" routerLink="/edit-profile">Profile</a>
       <a class="hover:underline" routerLink="/create-post">Create</a>
       <a class="hover:underline" (click)="logoutDesktop()">Logout</a>
     </div>
@@ -55,11 +51,7 @@
   <nav *ngIf="isOpen" class="p-2 text-lg font-medium">
     <div *ngIf="isLoggedIn" class="grid grid-cols-2 gap-y-2">
       <a class="font-bold" (click)="changeOpenState()" routerLink="/">Home</a>
-      <a
-        (click)="changeOpenState()"
-        routerLink="/profile/{{ currentUser.username }}"
-        >Profile</a
-      >
+      <a (click)="changeOpenState()" routerLink="/edit-profile">Edit Profile</a>
       <a (click)="changeOpenState()" routerLink="/create-post">Create</a>
       <a (click)="logout()">Logout</a>
     </div>

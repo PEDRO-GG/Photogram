@@ -19,6 +19,8 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { LoadingInterceptor } from './_interceptors/loading.interceptor';
+import { ProfileEditComponent } from './profile/profile-edit/profile-edit.component';
+import { ModalModule } from './_modal';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import { LoadingInterceptor } from './_interceptors/loading.interceptor';
     PostCardComponent,
     ProfileDetailComponent,
     PostCreateComponent,
+    ProfileEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,6 +46,7 @@ import { LoadingInterceptor } from './_interceptors/loading.interceptor';
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right',
     }),
+    ModalModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
