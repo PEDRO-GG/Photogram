@@ -8,5 +8,6 @@ namespace API.Interfaces
     public interface IPostRepository
     {
         Task<IEnumerable<PostDto>> GetPostsAsync();
+        Task<IEnumerable<Post>> GetPostsByUsernameAsync(string username);
     }
 }

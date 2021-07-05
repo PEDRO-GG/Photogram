@@ -19,7 +19,7 @@
   </article>
 
   <article
-    class="grid grid-cols-1 gap-2 my-3  lg:h-screen lg:place-items-start place-items-center lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4"
+    class="grid grid-cols-1 gap-2 my-3  posts lg:place-items-start place-items-center lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4"
   >
     <app-post-card
       *ngFor="let post of user.posts"
@@ -27,3 +27,8 @@
     ></app-post-card>
   </article>
 </ng-container>
+<style>
+  .posts {
+    min-height: 73vh;
+  }
+</style>

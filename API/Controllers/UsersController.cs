@@ -19,9 +19,11 @@ namespace API.Controllers
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
         private readonly IPhotoService _photoService;
+        private readonly IPostRepository _postRepository;
 
-        public UsersController(IUserRepository userRepository, IMapper mapper, IPhotoService photoService)
+        public UsersController(IUserRepository userRepository, IMapper mapper, IPhotoService photoService, IPostRepository postRepository)
         {
+            _postRepository = postRepository;
             _photoService = photoService;
             _mapper = mapper;
             _userRepository = userRepository;
@@ -35,7 +37,7 @@ namespace API.Controllers
             return Ok(users);
         }
 
-        [HttpGet("{username}", Name="GetUser")]
+        [HttpGet("{username}", Name = "GetUser")]
         public async Task<ActionResult<MemberDto>> GetUser(string username)
         {
             var user = await _userRepository.GetMemberAsync(username);
@@ -74,6 +76,27 @@ namespace API.Controllers
 
 
             return BadRequest("Problem creating post");
+        }
+
+        [Authorize]
+        [HttpPut("set-main-photo/{photoId}")]
+        public async Task<ActionResult> SetMainPhoto(int photoId)
+        {
+            var username = User.FindFirst(ClaimTypes.NameIdentifier).Value; // get username out of Bearer token
+
+            var user = await _userRepository.GetUserByUsernameAsync(username); // find user with that username
+
+            var posts = await _postRepository.GetPostsByUsernameAsync(username); // find the posts belonging to this user
+
+            var photo = posts.SingleOrDefault(post => post.Photo.Id == photoId).Photo; // find the desired photo
+
+            if (photo.Id == user.ProfilePicture.Id) return BadRequest("This is already your main photo");
+
+            user.ProfilePicture = photo;
+
+            if (await _userRepository.SaveAllAsync()) return NoContent(); // 204
+
+            return BadRequest("Failed to set main photo");
         }
     }
 }

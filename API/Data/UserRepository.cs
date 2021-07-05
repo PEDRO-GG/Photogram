@@ -35,8 +35,6 @@ namespace API.Data
                 .SingleOrDefaultAsync();
         }
 
-
-        // Below methods are not used by the UsersController
         public async Task<AppUser> GetUserByIdAsync(int id)
         {
             return await _context.Users.FindAsync(id);
@@ -45,7 +43,8 @@ namespace API.Data
         public async Task<AppUser> GetUserByUsernameAsync(string username)
         {
             return await _context.Users
-                .Include(p => p.Posts)
+                .Include(user => user.Posts)
+                .Include(user => user.ProfilePicture)
                 .SingleOrDefaultAsync(x => x.Username == username);
         }
 
