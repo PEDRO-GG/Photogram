@@ -20,9 +20,14 @@ export class LoginComponent implements OnInit {
 
   user: any = {};
   login() {
-    this.accountService.login(this.user).subscribe(() => {
-      this.toastr.success(`Welcome back ${this.user.username}`);
-      this.router.navigateByUrl('/');
-    });
+    this.accountService.login(this.user).subscribe(
+      (response) => {
+        this.toastr.success(`Welcome back ${this.user.username}`);
+        this.router.navigateByUrl('/');
+      },
+      (error) => {
+        this.toastr.error('Invalid credentials');
+      }
+    );
   }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs/operators';
 import { ModalService } from 'src/app/_modal/modal.service';
-import { User } from 'src/app/_models/_user';
 import { AccountService } from 'src/app/_services/account.service';
 import { UserService } from 'src/app/_services/user.service';
 
@@ -17,7 +17,8 @@ export class ProfileEditComponent implements OnInit {
   constructor(
     private userService: UserService,
     private accountService: AccountService,
-    private modalService: ModalService
+    private modalService: ModalService,
+    private toastr: ToastrService
   ) {
     this.accountService.currentUser$
       .pipe(take(1))
@@ -32,6 +33,18 @@ export class ProfileEditComponent implements OnInit {
     this.userService
       .getUser(this.username)
       .subscribe((user) => (this.user = user));
+  }
+
+  setMainPhoto(photo: any) {
+    this.closeModal('custom-modal-1');
+    this.userService.setMainPhoto(photo.id).subscribe(
+      (response) => {
+        this.user.profilePicture = photo;
+      },
+      (error) => {
+        this.toastr.error('This is already your main photo');
+      }
+    );
   }
 
   openModal(id: string) {

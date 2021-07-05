@@ -24,4 +24,8 @@ export class UserService {
     formData.append('Photo', picture);
     return this.http.post(this.baseUrl + 'users/create-post', formData);
   }
+
+  setMainPhoto(photoId: number) {
+    return this.http.put(this.baseUrl + 'users/set-main-photo/' + photoId, {});
+  }
 }
