@@ -45,6 +45,22 @@ namespace API.Controllers
         }
 
         [Authorize]
+        [HttpPut]
+        public async Task<ActionResult> UpdateUser(UpdateUserDto updatedUser)
+        {
+            var username = User.FindFirst(ClaimTypes.NameIdentifier).Value; // get username out of Bearer token
+            var user = await _userRepository.GetUserByUsernameAsync(username);
+
+            _mapper.Map(updatedUser, user);
+
+            _userRepository.Update(user);
+
+            if (await _userRepository.SaveAllAsync()) return NoContent();
+
+            return BadRequest("Failed to update user");
+        }
+
+        [Authorize]
         [HttpPost("create-post")]
         public async Task<ActionResult<PostDto>> CreatePost([FromForm] string Caption, [FromForm] IFormFile Photo)
         {

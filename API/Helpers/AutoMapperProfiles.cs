@@ -17,6 +17,7 @@ namespace API.Helpers
             CreateMap<Post, PostDto>()
                 .ForMember(dest => dest.PostedBy, opt => opt.MapFrom(src => src.PostedBy.Username))
                 .ForMember(dest => dest.ProfilePicture, opt => opt.MapFrom(src => src.PostedBy.ProfilePicture));
+            CreateMap<UpdateUserDto, AppUser>();
         }
     }
 }

@@ -30,4 +30,8 @@ export class LoginComponent implements OnInit {
       }
     );
   }
+
+  forgotPassword() {
+    this.toastr.show('Feature coming soon');
+  }
 }

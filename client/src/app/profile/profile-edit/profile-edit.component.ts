@@ -11,8 +11,9 @@ import { UserService } from 'src/app/_services/user.service';
   styleUrls: ['./profile-edit.component.css'],
 })
 export class ProfileEditComponent implements OnInit {
-  username: string;
-  user: any;
+  username: string; // used to fetch user by username
+  user: any; // current logged in user in its current state
+  updatedUser: any; // model for ngForm
 
   constructor(
     private userService: UserService,
@@ -30,9 +31,10 @@ export class ProfileEditComponent implements OnInit {
   }
 
   loadUser() {
-    this.userService
-      .getUser(this.username)
-      .subscribe((user) => (this.user = user));
+    this.userService.getUser(this.username).subscribe((user) => {
+      this.user = user;
+      this.updatedUser = this.user; // some intial state is needed to show in the ngForm
+    });
   }
 
   setMainPhoto(photo: any) {
@@ -40,9 +42,22 @@ export class ProfileEditComponent implements OnInit {
     this.userService.setMainPhoto(photo.id).subscribe(
       (response) => {
         this.user.profilePicture = photo;
+        this.toastr.success('Changed profile picture');
       },
       (error) => {
         this.toastr.error('This is already your main photo');
+      }
+    );
+  }
+
+  updateUser() {
+    this.userService.updateUser(this.updatedUser).subscribe(
+      (response) => {
+        this.user.introduction = this.updatedUser.introduction;
+        this.toastr.success('Profile updated successfully');
+      },
+      (error) => {
+        this.toastr.error('Something went wrong');
       }
     );
   }

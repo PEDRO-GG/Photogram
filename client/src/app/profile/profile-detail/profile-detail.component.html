@@ -15,7 +15,13 @@
         </p>
       </div>
     </div>
-    <p class="text-base">{{ user.introduction.slice(0, 80) }}</p>
+
+    <p *ngIf="user.introduction" class="mt-5 text-base">
+      {{ user.introduction.slice(0, 80) }}
+    </p>
+    <p *ngIf="!user.introduction" class="mt-5 text-base">
+      You have not added an introduction.
+    </p>
   </article>
 
   <article

@@ -33,7 +33,7 @@ namespace API.Controllers
                 PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password)),
                 PasswordSalt = hmac.Key,
                 ProfilePicture = new Photo{
-                    Url = "someLinkToDefaultPicture"
+                    Url = "https://res.cloudinary.com/dnsvqpc4t/image/upload/v1625105215/user_och5qc.png"
                 }
             };
 

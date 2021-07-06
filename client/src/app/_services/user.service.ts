@@ -28,4 +28,8 @@ export class UserService {
   setMainPhoto(photoId: number) {
     return this.http.put(this.baseUrl + 'users/set-main-photo/' + photoId, {});
   }
+
+  updateUser(user: any) {
+    return this.http.put(this.baseUrl + 'users', user);
+  }
 }
